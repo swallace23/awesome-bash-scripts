@@ -1,8 +1,11 @@
 #!/bin/bash
 con="$(xrandr | grep -w connected | grep -v '^e')"
 if [ -z "${con}" ]; then
-	echo "no external monitor connected"
-	exit 1
+	xrandr --output DP-1 --off
+	xrandr --output DP-2 --off
+	xrandr --output DP-3 --off
+	xrandr --output DP-4 --off
+	exit 0
 fi
 id="${con:0:4}"
 dir="right"
